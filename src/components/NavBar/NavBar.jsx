@@ -7,8 +7,8 @@ const NavBar = () => {
                 <div className="">Gadget Heaven</div>
                 <div className="">
                     <ul className=" flex items-center gap-5">
-                        <NavLink><li>Home</li></NavLink>
-                        <NavLink><li>Home</li></NavLink>
+                        <NavLink to={"/"}><li>Home</li></NavLink>
+                        <NavLink to={"/dashboard"}><li>Dashboard</li></NavLink>
                         <NavLink><li>Home</li></NavLink>
                     </ul>
                 </div>

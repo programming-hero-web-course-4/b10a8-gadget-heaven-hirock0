@@ -3,9 +3,9 @@
 const App = () => {
   return (
     <main className="">
-      <div className="">
-        App
-      </div>
+        <div className="">
+            App
+        </div>
     </main>
   )
 }
