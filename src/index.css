@@ -1,17 +1,18 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Sora:wght@100..800&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Sora:wght@100..800&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-*{
+* {
   margin: 0%;
   padding: 0%;
   box-sizing: border-box;
 }
-body{
+body {
   font-family: "Sora", serif;
 }
 
-main>div,footer>div,nav>div{
-  @apply container mx-auto px-5
+main > div,
+footer > div,
+nav > div {
+  @apply container mx-auto px-5;
 }

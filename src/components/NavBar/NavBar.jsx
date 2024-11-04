@@ -2,6 +2,8 @@ import { NavLink } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { LuMenu } from "react-icons/lu";
+import { TiShoppingCart } from "react-icons/ti";
+import { CiHeart } from "react-icons/ci";
 
 const NavBar = () => {
   const location = useLocation();
@@ -48,17 +50,21 @@ const NavBar = () => {
             <NavLink to={"/"}>
               <li>Home</li>
             </NavLink>
+            <NavLink>
+              <li>Statistics</li>
+            </NavLink>
             <NavLink to={"/dashboard"}>
               <li>Dashboard</li>
-            </NavLink>
-            <NavLink>
-              <li>Home</li>
             </NavLink>
           </ul>
         </div>
         <div className=" flex items-center gap-3">
-          <button>cart</button>
-          <button>wish</button>
+          <button>
+            <TiShoppingCart size={25} />
+          </button>
+          <button>
+            <CiHeart size={25} />
+          </button>
           <button
             onClick={(e) => {
               e.stopPropagation(), setMenuFlag((prev) => !prev);
