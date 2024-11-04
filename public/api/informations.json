@@ -1,0 +1,194 @@
+{
+    "categories": [
+        {
+            "id": 1,
+            "label": "All Products"
+        },
+        {
+            "id": 2,
+            "label": "Laptop"
+        },
+        {
+            "id": 3,
+            "label": "Phones"
+        },
+        {
+            "id": 4,
+            "label": "Accessories"
+        },
+        {
+            "id": 5,
+            "label": "Smart Watches"
+        },
+        {
+            "id": 6,
+            "label": "MacBook"
+        },
+        {
+            "id": 7,
+            "label": "iPhone"
+        }
+    ],
+   "products": [
+        {
+            "product_id": 1,
+            "product_title": "Gaming Laptop",
+            "product_image": "https://i.ibb.co.com/Z26M3vj/gaming-laptop-1.jpg",
+            "category": "Laptop",
+            "price": 89.99,
+            "description": "High-performance gaming laptop with powerful graphics and fast processor.",
+            "Specification": [
+                "Intel Core i7",
+                "16GB RAM",
+                "512GB SSD",
+                "NVIDIA GTX 1650"
+            ],
+            "availability": true,
+            "rating": 4.7
+        },
+        {
+            "product_id": 2,
+            "product_title": "Ultrabook Laptop",
+            "product_image": "https://i.ibb.co.com/gD2GP4v/ultarbook.jpg",
+            "category": "Laptop",
+            "price": 999.99,
+            "description": "Slim and lightweight ultrabook with long battery life and high-resolution display.",
+            "Specification": [
+                "Intel Core i5",
+                "8GB RAM",
+                "256GB SSD",
+                "13.3-inch display"
+            ],
+            "availability": true,
+            "rating": 4.5
+        },
+        {
+            "product_id": 3,
+            "product_title": "2-in-1 Convertible Laptop",
+            "product_image": "https://i.ibb.co.com/bbqPBPT/smal-lap.jpg",
+            "category": "Laptop",
+            "price": 100,
+            "description": "Versatile 2-in-1 laptop with touchscreen and 360-degree hinge.",
+            "Specification": [
+                "Intel Core i5",
+                "8GB RAM",
+                "128GB SSD",
+                "Touchscreen"
+            ],
+            "availability": true,
+            "rating": 4.4
+        },
+        {
+            "product_id": 4,
+            "product_title": "Business Laptop",
+            "product_image": "https://i.ibb.co.com/FqXmDVC/bussiness-lap.jpg",
+            "category": "Laptop",
+            "price": 150,
+            "description": "Professional laptop with advanced security features and powerful processing.",
+            "Specification": [
+                "Intel Core i7",
+                "16GB RAM",
+                "1TB HDD",
+                "15.6-inch FHD display"
+            ],
+            "availability": false,
+            "rating": 4.6
+        },
+        {
+            "product_id": 5,
+            "product_title": "Budget Laptop",
+            "product_image": "https://i.ibb.co.com/Jj5pZQZ/budget-lap.jpg",
+            "category": "Laptop",
+            "price": 550.00,
+            "description": "Affordable laptop suitable for everyday tasks and basic computing needs.",
+            "Specification": [
+                "Intel Core i3",
+                "4GB RAM",
+                "256GB SSD",
+                "14-inch HD display"
+            ],
+            "availability": true,
+            "rating": 4.2
+        },
+        {
+            "product_id": 6,
+            "product_title": "Student Laptop",
+            "product_image": "https://i.ibb.co.com/FDtp9mG/student-lap.jpg",
+            "category": "Laptop",
+            "price": 90,
+            "description": "Ideal laptop for students with portability and efficient performance.",
+            "Specification": [
+                "AMD Ryzen 5",
+                "8GB RAM",
+                "256GB SSD",
+                "Lightweight design"
+            ],
+            "availability": true,
+            "rating": 4.3
+        },
+        {
+            "product_id": 7,
+            "product_title": "Smartphone X",
+            "product_image": "https://i.ibb.co.com/23Lydt0/phone-x.jpg",
+            "category": "Phones",
+            "price": 85.66,
+            "description": "High-end smartphone with stunning display and advanced camera features.",
+            "Specification": [
+                "128GB storage",
+                "6GB RAM",
+                "Triple camera setup",
+                "6.5-inch OLED display"
+            ],
+            "availability": true,
+            "rating": 4.8
+        },
+        {
+            "product_id": 8,
+            "product_title": "Budget Smartphone",
+            "product_image": "https://i.ibb.co.com/NCf3fkn/budget-phone.jpg",
+            "category": "Phones",
+            "price": 170.50,
+            "description": "Affordable smartphone with all essential features for everyday use.",
+            "Specification": [
+                "64GB storage",
+                "4GB RAM",
+                "Dual camera",
+                "6.1-inch LCD display"
+            ],
+            "availability": true,
+            "rating": 4.3
+        },
+        {
+            "product_id": 9,
+            "product_title": "Wireless Earbuds",
+            "product_image": "https://i.ibb.co.com/jZsLhP0/wirebud.jpg",
+            "category": "Accessories",
+            "price": 149.99,
+            "description": "Compact wireless earbuds with noise cancellation and long battery life.",
+            "Specification": [
+                "Bluetooth 5.0",
+                "Noise-cancelling",
+                "Up to 24 hours playtime",
+                "Water-resistant"
+            ],
+            "availability": true,
+            "rating": 4.6
+        },
+        {
+            "product_id": 10,
+            "product_title": "Smartwatch Pro",
+            "product_image": "https://i.ibb.co.com/CV7LvtJ/smart-watch.jpg",
+            "category": "Smart Watches",
+            "price": 199.99,
+            "description": "Advanced smartwatch with fitness tracking and customizable watch faces.",
+            "Specification": [
+                "Heart rate monitor",
+                "GPS tracking",
+                "5-day battery life",
+                "Waterproof"
+            ],
+            "availability": false,
+            "rating": 4.7
+        }
+    ]
+}

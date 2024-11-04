@@ -1,7 +1,31 @@
-const ArrayNum = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-const AllBtn = [1, 2, 3, 4, 5, 6, 7];
+import { useEffect, useState } from "react";
+
+import axios from "axios";
+import CategoryBtn from "./components/CategoryBtn/CategoryBtn";
+import ProductCards from "./components/ProductCards/ProductCards";
 
 const App = () => {
+  const [products, setProducts] = useState([]);
+  const [categories, setCategories] = useState([]);
+
+  const onAllProductsWithCategories = async () => {
+    try {
+      const fetchData = await fetch("/api/informations.json");
+      const reqApi = await fetchData.json();
+      const categoriesData = await reqApi?.categories;
+      setCategories(categoriesData);
+      const productsData = await reqApi?.products;
+      setProducts(productsData);
+    } catch (error) {
+      throw new Error(error);
+    }
+  };
+
+  console.log(categories);
+  useEffect(() => {
+    onAllProductsWithCategories();
+  }, []);
+
   return (
     <main className="">
       <section className=" container mx-auto  h-[850px] max-md:h-[800px] max-sm:h-[680px]  ">
@@ -45,39 +69,16 @@ const App = () => {
             {/* left_start */}
             <div className=" bg-white rounded-lg lg:p-5  h-fit  w-1/6 max-lg:w-full ">
               <div className=" lg:flex lg:flex-col lg:items-center gap-5 max-lg:grid max-lg:grid-cols-3 max-sm:grid-cols-2 justify-items-center max-lg:p-5 ">
-                {AllBtn.map((item, index) => (
-                  <button
-                    key={index}
-                    className=" bg-zinc-100 shadow-lg text-sm text-slate-600 w-full  py-3  px-3 rounded-full"
-                  >
-                    All Products
-                  </button>
+                {categories?.map((item, index) => (
+                  <CategoryBtn key={index} item={item} />
                 ))}
               </div>
             </div>
             {/* left_end */}
             <div className="w-5/6  max-lg:w-full ">
               <div className=" max-lg:w-full grid grid-cols-3 gap-5 max-md:grid-cols-2 max-sm:grid-cols-1 justify-items-center">
-                {ArrayNum.map((item, index) => (
-                  <div
-                    key={index}
-                    className=" w-full bg-white p-5 max-sm:p-3 rounded-lg "
-                  >
-                    <div className="">
-                      <img
-                        src="https://img.leboncoin.fr/api/v1/lbcpb1/images/b3/02/df/b302df7cf667622f92b633dd02df223912a64208.jpg?rule=ad-large"
-                        alt="pod"
-                        className=" h-52 max-sm:h-80 w-full rounded-lg object-cover"
-                      />
-                    </div>
-                    <div className="mt-5 space-y-1">
-                      <h1 className=" text-xl">Dell XPS 13</h1>
-                      <h1 className=" opacity-70">Price: 99.9Tk</h1>
-                      <button className=" text-sm rounded-full px-2 py-2 border border-purple-500 text-purple-500">
-                        View Details
-                      </button>
-                    </div>
-                  </div>
+                {products?.map((item, index) => (
+                  <ProductCards key={index} item={item} />
                 ))}
               </div>
             </div>

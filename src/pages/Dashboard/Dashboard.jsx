@@ -19,17 +19,29 @@ const Dashboard = () => {
             </div>
             <div className=" mt-5 pb-10">
               <TabList className={"flex max-md:flex-col gap-5 text-white "}>
-                <Tab className={" select-none rounded-md cursor-pointer border py-2 w-52  text-center"}>Cart</Tab>
-                <Tab className={" select-none rounded-md cursor-pointer border py-2 w-52  text-center"} >Wishlist</Tab>
+                <Tab
+                  className={
+                    " select-none rounded-md cursor-pointer border py-2 w-52  text-center"
+                  }
+                >
+                  Cart
+                </Tab>
+                <Tab
+                  className={
+                    " select-none rounded-md cursor-pointer border py-2 w-52  text-center"
+                  }
+                >
+                  Wishlist
+                </Tab>
               </TabList>
             </div>
 
             <div className=" bg-slate-100 w-full  text-black">
               <TabPanel>
-                <Carts/>
+                <Carts />
               </TabPanel>
               <TabPanel>
-                    <WishLists/>
+                <WishLists />
               </TabPanel>
             </div>
           </Tabs>
