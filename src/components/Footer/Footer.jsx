@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="h-[50vh] py-10">
+    <footer className="h-[50vh] py-10 ">
       <div className="">
         <div className=" space-y-2 text-center">
           <h1 className=" font-semibold text-3xl">Gadget Heaven</h1>
@@ -10,7 +10,7 @@ const Footer = () => {
         </div>
         <div className=""></div>
       </div>
-      <section className=" border-t-2 mt-5 pt-5">
+      <section className=" border-t-2 mt-5 pt-5 pb-10">
         <div className=" container text-center gap-5 mx-auto px-5 grid grid-cols-3 max-lg:grid-cols-2 max-sm:grid-cols-1 justify-items-center">
           <div className="">
             <h1 className=" text-xl font-semibold">Service</h1>
@@ -30,36 +30,30 @@ const Footer = () => {
             </ul>
           </div>
           <div className="">
-            <h1 className=" text-xl font-semibold">Service</h1>
+            <h1 className=" text-xl font-semibold">Company</h1>
             <ul className=" mt-2">
               <NavLink to={"/"}>
-                <li>Product Support</li>
+                <li>About Us</li>
               </NavLink>
               <NavLink to={"/"}>
-                <li>Order Tracking</li>
+                <li>Careers</li>
               </NavLink>
               <NavLink to={"/"}>
-                <li>Shipping Delivery</li>
-              </NavLink>
-              <NavLink to={"/"}>
-                <li>Returns</li>
+                <li>Contact</li>
               </NavLink>
             </ul>
           </div>
           <div className="">
-            <h1 className=" text-xl font-semibold">Service</h1>
+            <h1 className=" text-xl font-semibold">Legal</h1>
             <ul className=" mt-2">
               <NavLink to={"/"}>
-                <li>Product Support</li>
+                <li>Terms of Service</li>
               </NavLink>
               <NavLink to={"/"}>
-                <li>Order Tracking</li>
+                <li>Privacy Policy</li>
               </NavLink>
               <NavLink to={"/"}>
-                <li>Shipping Delivery</li>
-              </NavLink>
-              <NavLink to={"/"}>
-                <li>Returns</li>
+                <li>Cookie Policy</li>
               </NavLink>
             </ul>
           </div>

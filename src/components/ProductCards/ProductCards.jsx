@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const ProductCards = ({ item }) => {
   return (
     <div className=" w-full bg-white p-5 max-sm:p-3 rounded-lg ">
-      <div className=" h-52 bg-red-200 max-sm:h-72  flex items-center justify-center">
+      <div className=" h-52  max-sm:h-72  flex items-center justify-center">
         <img
           src={item.product_image}
           alt={item.product_title}

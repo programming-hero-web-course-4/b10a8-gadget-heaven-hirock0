@@ -110,7 +110,7 @@ const NavBar = () => {
           <div
             className={`${
               !cartFlag ? "hidden" : "block"
-            } absolute top-14 bg-white p-5 rounded-b-lg shadow-lg h-52 right-0 flex flex-col items-center  w-52`}
+            } absolute top-14 bg-white text-black p-5 rounded-lg shadow-lg h-52 right-0 flex flex-col items-center  w-52`}
           >
             <h1 className=" font-semibold underline underline-offset-4 text-purple-500">
               Carts
@@ -149,7 +149,7 @@ const NavBar = () => {
               onClick={(e) => e.stopPropagation()}
               className={`${
                 !wishlistFlag ? "hidden" : "block"
-              } absolute top-14 bg-white p-5 rounded-b-lg shadow-lg h-52 right-0  w-52`}
+              } absolute top-14 bg-white text-black p-5 rounded-lg shadow-lg h-52 right-0  w-52`}
             >
               <h1 className=" font-semibold underline underline-offset-4 text-purple-500">
                 Wishlist

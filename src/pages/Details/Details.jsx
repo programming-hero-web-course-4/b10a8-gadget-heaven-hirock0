@@ -5,11 +5,15 @@ import { FaRegHeart } from "react-icons/fa";
 import { TiShoppingCart } from "react-icons/ti";
 import { Rate } from "antd";
 import { toast } from "react-toastify";
+import { useState } from "react";
 
 const Details = () => {
   const { productId } = useParams();
   const { products, setCarts, carts, wishlists, setWishlists } =
     useAppContext();
+
+  const [uniqueWishFlag, setUniqueWishFlag] = useState(false);
+  const [uniqueCartFlag, setUniqueCartFlag] = useState(false);
 
   const filterProduct = products?.filter(
     (item) => item?.product_id == productId
@@ -26,9 +30,9 @@ const Details = () => {
       toast.success("Cart successful");
     } else {
       toast.success("Already exist!");
+      setUniqueCartFlag(true);
     }
   };
-
   const onWishlistHandler = (wishlist) => {
     const validator = wishlists.some(
       (item) => item.product_id == wishlist.product_id
@@ -38,12 +42,13 @@ const Details = () => {
       toast.success("Wishlist successful");
     } else {
       toast.success("Already exist!");
+      setUniqueWishFlag(true);
     }
   };
 
   return (
     <main className="h-[700px] lg:h-screen max-lg:h-[1000px] max-sm:h-[1100px]  bg-slate-100">
-      <section className=" relative bg-purple-500 pt-10 pb-32  text-white">
+      <section className=" relative bg-purple-500 pt-10 pb-80 max-lg:pb-72 max-sm:pb-52  text-white">
         <div className=" text-center flex flex-col items-center">
           <h1 className=" text-center text-2xl">Product Details</h1>
           <p className=" w-4/6">
@@ -96,10 +101,13 @@ const Details = () => {
               </div>
               <div className=" flex items-center gap-5 mt-3">
                 <button
+                  disabled={uniqueCartFlag}
                   onClick={() => {
                     onCartHandler(filterProduct[0], carts, setCarts);
                   }}
-                  className=" tooltip bg-purple-500 hover:bg-purple-700 active:bg-purple-800 text-white px-4 py-1 rounded-full flex items-center gap-2 shadow-lg "
+                  className={`${
+                    uniqueCartFlag && " opacity-50"
+                  } tooltip bg-purple-500 hover:bg-purple-700 active:bg-purple-800 text-white px-4 py-1 rounded-full flex items-center gap-2 shadow-lg `}
                   data-tip="cart"
                 >
                   <span>Add To Cart</span>
@@ -117,7 +125,12 @@ const Details = () => {
                     );
                   }}
                 >
-                  <button className=" text-red-600">
+                  <button
+                    disabled={uniqueWishFlag}
+                    className={`${
+                      uniqueWishFlag ? " text-black" : "text-red-600"
+                    } `}
+                  >
                     <FaRegHeart className="  " size={16} />
                   </button>
                 </div>

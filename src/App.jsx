@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import ProductCards from "./components/ProductCards/ProductCards";
 import { useAppContext } from "./AppContextProvider";
+import { NavLink } from "react-router-dom";
 
 const App = () => {
   const [products, setProducts] = useState([]);
@@ -45,15 +46,19 @@ const App = () => {
             Upgrade Your Tech Accessorize with <br /> with Gadget Heaven
             Accessories
           </h1>
-          <p className=" text-sm mt-5">
-            Explore the latest gadgets that will take your experience to the
-            next label. Form smart devices to <br /> the coolest accessories, we
-            have it all!
-          </p>
+          <div className=" flex items-center justify-center">
+            <p className=" text-sm mt-5 w-5/6 ">
+              Explore the latest gadgets that will take your experience to the
+              next label. Form smart devices to <br /> the coolest accessories,
+              we have it all!
+            </p>
+          </div>
           <div className=" flex items-center justify-center mt-5">
-            <button className=" bg-white px-5 py-3 rounded-full text-black">
-              Shope Now
-            </button>
+            <NavLink to={"/dashboard"}>
+              <button className=" bg-white px-5 py-3 shadow-lg hover:bg-slate-200 active:bg-slate-300 rounded-full text-black">
+                Shope Now
+              </button>
+            </NavLink>
           </div>
           {/* small_card_start */}
           <div className="  absolute -bottom-full max-md:-bottom-80 max-sm:-bottom-72 h-[500px]   right-0 left-0  flex items-center justify-center">
