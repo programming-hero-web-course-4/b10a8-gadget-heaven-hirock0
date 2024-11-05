@@ -6,28 +6,6 @@ import { TiShoppingCart } from "react-icons/ti";
 import { Rate } from "antd";
 import { toast } from "react-toastify";
 
-export const onCartHandler = (cart, carts, setCarts) => {
-  const validator = carts.some((item) => item.product_id == cart.product_id);
-  if (!validator) {
-    setCarts((prev) => [...prev, cart]);
-    toast.success("Cart successful");
-  } else {
-    toast.success("Already exist!");
-  }
-};
-
-export const onWishlistHandler = (wishlist, wishlists, setWishlists) => {
-  const validator = wishlists.some(
-    (item) => item.product_id == cart.product_id
-  );
-  if (!validator) {
-    setWishlists((prev) => [...prev, wishlist]);
-    toast.success("Wishlist successful");
-  } else {
-    toast.success("Already exist!");
-  }
-};
-
 const Details = () => {
   const { productId } = useParams();
   const { products, setCarts, carts, wishlists, setWishlists } =
@@ -39,6 +17,28 @@ const Details = () => {
 
   const onRatingHandler = (rating) => {
     toast.success(`You have add ${rating} stars`);
+  };
+
+  const onCartHandler = (cart) => {
+    const validator = carts.some((item) => item.product_id == cart.product_id);
+    if (!validator) {
+      setCarts((prev) => [...prev, cart]);
+      toast.success("Cart successful");
+    } else {
+      toast.success("Already exist!");
+    }
+  };
+
+  const onWishlistHandler = (wishlist) => {
+    const validator = wishlists.some(
+      (item) => item.product_id == wishlist.product_id
+    );
+    if (!validator) {
+      setWishlists((prev) => [...prev, wishlist]);
+      toast.success("Wishlist successful");
+    } else {
+      toast.success("Already exist!");
+    }
   };
 
   return (
@@ -68,7 +68,7 @@ const Details = () => {
               <h1>Price $ {filterProduct[0]?.price}</h1>
               <button
                 data-tip="Stock"
-                className=" w-fit tooltip mt-3 rounded-full border bg-lime-100 border-lime-600 text-sm px-3 py-1 text-lime-600"
+                className=" w-fit tooltip mt-3 rounded-full border bg-lime-100 hover:bg-lime-300 shadow-lg active:bg-lime-400 border-lime-600 text-sm px-3 py-1 text-lime-600"
               >
                 In Stock
               </button>
@@ -99,7 +99,7 @@ const Details = () => {
                   onClick={() => {
                     onCartHandler(filterProduct[0], carts, setCarts);
                   }}
-                  className=" tooltip bg-purple-500 text-white px-4 py-1 rounded-full flex items-center gap-2 "
+                  className=" tooltip bg-purple-500 hover:bg-purple-700 active:bg-purple-800 text-white px-4 py-1 rounded-full flex items-center gap-2 shadow-lg "
                   data-tip="cart"
                 >
                   <span>Add To Cart</span>
@@ -107,7 +107,7 @@ const Details = () => {
                   <TiShoppingCart size={20} />
                 </button>
                 <div
-                  className="tooltip cursor-pointer p-2 border rounded-full flex items-center justify-center w-8 h-8"
+                  className="tooltip cursor-pointer shadow-lg hover:bg-slate-300 active:bg-slate-400 p-2 border rounded-full flex items-center justify-center w-8 h-8"
                   data-tip="Wishlist"
                   onClick={() => {
                     onWishlistHandler(
@@ -117,7 +117,7 @@ const Details = () => {
                     );
                   }}
                 >
-                  <button className=" ">
+                  <button className=" text-red-600">
                     <FaRegHeart className="  " size={16} />
                   </button>
                 </div>

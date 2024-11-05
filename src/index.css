@@ -16,10 +16,3 @@ footer > div,
 nav > div {
   @apply container mx-auto px-5;
 }
-
-
-.active-link {
-  @apply text-green-600
- 
-}
-

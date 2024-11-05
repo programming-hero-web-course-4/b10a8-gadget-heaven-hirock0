@@ -11,6 +11,7 @@ const AppContextProvider = ({ children }) => {
   const [category, setCategory] = useState("All Products");
   const [carts, setCarts] = useState([]);
   const [wishlists, setWishlists] = useState([]);
+  const [totalCartsPrice, setTotalCartsPrice] = useState([]);
   const value = {
     price,
     setPrice,
@@ -22,6 +23,8 @@ const AppContextProvider = ({ children }) => {
     setCarts,
     wishlists,
     setWishlists,
+    totalCartsPrice,
+    setTotalCartsPrice,
   };
   const onAllProductsWithCategories = async () => {
     try {

@@ -1,7 +1,7 @@
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import { useAppContext } from "../../AppContextProvider";
 import { toast } from "react-toastify";
-import { onCartHandler } from "../../pages/Details/Details";
+
 const ReUseAbleCards = ({ item }) => {
   const { carts, setCarts, setWishlists, wishlists } = useAppContext();
   const onDeleteHandler = (Id) => {
@@ -17,7 +17,20 @@ const ReUseAbleCards = ({ item }) => {
       toast.warn("Cart data deleted!");
     }
   };
-  
+
+  const onCartHandler = (cart) => {
+    const validator = carts.some((item) => item.product_id == cart.product_id);
+    if (!validator) {
+      setCarts((prev) => [...prev, cart]);
+      toast.success("Cart successful");
+      const filterWishlist = wishlists.filter(
+        (elm) => elm.product_id !== cart.product_id
+      );
+      setWishlists(filterWishlist);
+    } else {
+      toast.success("Already exist!");
+    }
+  };
 
   return (
     <div className=" bg-white p-5 rounded-lg shadow-lg flex gap-5 items-center max-md:flex-col">
@@ -35,7 +48,10 @@ const ReUseAbleCards = ({ item }) => {
           <p className=" opacity-70">{item[0]?.description}</p>
           <h1>Price: $ {item[0]?.price}</h1>
           {item[1] === "Wishlists" ? (
-            <button onClick={()=>onCartHandler(item[0],carts,setCarts)} className=" bg-purple-500 text-white px-5 py-2 rounded-full hover:bg-purple-700 active:bg-purple-800 shadow-lg">
+            <button
+              onClick={() => onCartHandler(item[0])}
+              className=" bg-purple-500 text-white px-5 py-2 rounded-full hover:bg-purple-700 active:bg-purple-800 shadow-lg"
+            >
               Add Cart
             </button>
           ) : null}

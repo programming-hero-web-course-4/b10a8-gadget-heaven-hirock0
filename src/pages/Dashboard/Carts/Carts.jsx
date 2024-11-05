@@ -7,10 +7,20 @@ const Carts = () => {
   const { carts } = useAppContext();
   const [sortedCards, setSortedCards] = useState([]);
   const [flag, setFlag] = useState(false);
+
+  const TotalPrice = carts.reduce(
+    (accumulate, item) => accumulate + item.price,
+    0
+  );
+
   const sortHandler = () => {
-    const sortedData = carts.sort((a, b) => b.price - a.price);
-    toast.success("It has been sorted by Descending order ");
-    setSortedCards(sortedData);
+    if (carts.length == 0) {
+      toast.warning("Data not available!");
+    } else {
+      const sortedData = carts.sort((a, b) => b.price - a.price);
+      toast.success("It has been sorted by Descending order ");
+      setSortedCards(sortedData);
+    }
   };
 
   return (
@@ -19,7 +29,7 @@ const Carts = () => {
         <div className=" flex max-md:flex-col my-5 items-center justify-between">
           <h1 className=" text-xl font-semibold">Cart</h1>
           <div className=" flex max-md:flex-col items-center gap-2">
-            <h1 className=" opacity-70">Total cost : 999.99</h1>
+            <h1 className=" opacity-70">Total cost : ${TotalPrice}</h1>
             <div className=" flex items-center gap-2">
               <button
                 onClick={() => {

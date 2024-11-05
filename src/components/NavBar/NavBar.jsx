@@ -20,7 +20,10 @@ const NavBar = () => {
     (accumulate, item) => accumulate + item.price,
     0
   );
-
+  const WishlistTotalPrice = wishlists.reduce(
+    (accumulate, item) => accumulate + item.price,
+    0
+  );
   useEffect(() => {
     window.addEventListener("scroll", (e) => {
       const hightData = ref.current.getBoundingClientRect();
@@ -57,12 +60,12 @@ const NavBar = () => {
             onClick={(e) => e.stopPropagation()}
             className={`${
               !menuFlag ? " max-md:translate-x-full " : " max-md:translate-x-0"
-            } max-md:transition-all  max-md:flex-col max-md:bg-white max-md:text-black max-md:shadow-lg max-md:items-start max-md:gap-2 max-md:p-5 max-md:rounded-sm  flex items-center gap-5`}
+            } max-md:transition-all  max-md:flex-col max-md:bg-white max-md:h-screen max-md:w-[50vw] max-md:text-black max-md:shadow-lg max-md:items-start max-md:gap-2 max-md:p-5 max-md:rounded-sm  flex items-center gap-5`}
           >
             <NavLink
               to={"/"}
               className={({ isActive }) =>
-                isActive ? "active-link" : "inactive-link"
+                isActive && " bg-black py-2 px-5 rounded-md text-white"
               }
             >
               <li>Home</li>
@@ -70,7 +73,7 @@ const NavBar = () => {
             <NavLink
               to={"/statistics"}
               className={({ isActive }) =>
-                isActive ? "active-link" : "inactive-link"
+                isActive && " bg-black py-2 px-5 rounded-md text-white"
               }
             >
               <li>Statistics</li>
@@ -78,20 +81,20 @@ const NavBar = () => {
             <NavLink
               to={"/dashboard"}
               className={({ isActive }) =>
-                isActive ? "active-link" : "inactive-link"
+                isActive && " bg-black py-2 px-5 rounded-md text-white"
               }
             >
               <li>Dashboard</li>
             </NavLink>
           </ul>
         </div>
-        <div
-          onClick={(e) => e.stopPropagation()}
-          className=" relative flex items-center gap-3"
-        >
+        <div className=" relative flex items-center gap-3">
           <button
-            onClick={() => {
-              setWishlistFlag(false), setCartFlag((prev) => !prev);
+            onClick={(e) => {
+              e.stopPropagation(),
+                setWishlistFlag(false),
+                setMenuFlag(false),
+                setCartFlag((prev) => !prev);
             }}
             className=" relative tooltip"
             data-tip="Carts"
@@ -107,15 +110,30 @@ const NavBar = () => {
           <div
             className={`${
               !cartFlag ? "hidden" : "block"
-            } absolute top-14 bg-red-300 h-52 right-0  w-52`}
+            } absolute top-14 bg-white p-5 rounded-b-lg shadow-lg h-52 right-0 flex flex-col items-center  w-52`}
           >
-            <h1>{CartTotalPrice}</h1>
+            <h1 className=" font-semibold underline underline-offset-4 text-purple-500">
+              Carts
+            </h1>
+            <h1 className=" font-semibold text-xl max-sm:text-base">
+              {carts?.length} Items in Cart
+            </h1>
+            <div className=" divide-x-2 divider my-2"></div>
+            <h1 className="mb-2">Subtotal: ${CartTotalPrice}</h1>
+            <NavLink to={"/dashboard"}>
+              <button className=" bg-purple-500 px-5 py-2 rounded-full hover:bg-purple-700 active:bg-purple-800 text-white">
+                Dashboard
+              </button>
+            </NavLink>
           </div>
           {/* --------------------------- */}
 
           <button
-            onClick={() => {
-              setWishlistFlag((prev) => !prev), setCartFlag(false);
+            onClick={(e) => {
+              e.stopPropagation(),
+                setWishlistFlag((prev) => !prev),
+                setMenuFlag(false),
+                setCartFlag(false);
             }}
             className=" tooltip relative"
             data-tip="Wishlist"
@@ -128,17 +146,31 @@ const NavBar = () => {
             ) : null}
             {/* ----------- */}
             <div
+              onClick={(e) => e.stopPropagation()}
               className={`${
                 !wishlistFlag ? "hidden" : "block"
-              } absolute top-14 bg-red-300  h-52 right-0  w-52`}
+              } absolute top-14 bg-white p-5 rounded-b-lg shadow-lg h-52 right-0  w-52`}
             >
-              <h1>wichList</h1>
+              <h1 className=" font-semibold underline underline-offset-4 text-purple-500">
+                Wishlist
+              </h1>
+              <h1 className=" font-semibold text-xl max-sm:text-base">
+                {wishlists?.length} Items in Cart
+              </h1>
+              <div className=" divide-x-2 divider my-2"></div>
+              <h1 className="mb-2">Subtotal: ${WishlistTotalPrice}</h1>
+              <NavLink to={"/dashboard"}>
+                <button className=" bg-purple-500 px-5 py-2 rounded-full hover:bg-purple-700 active:bg-purple-800 text-white">
+                  Dashboard
+                </button>
+              </NavLink>
             </div>
             {/* --------------------------- */}
           </button>
           <button
             onClick={(e) => {
-              e.stopPropagation(), setMenuFlag((prev) => !prev);
+              e.stopPropagation(), setWishlistFlag(false), setCartFlag(false);
+              setMenuFlag((prev) => !prev);
             }}
             className=" md:hidden"
           >
