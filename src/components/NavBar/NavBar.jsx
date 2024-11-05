@@ -55,12 +55,14 @@ const NavBar = () => {
         }  h-full`}
       >
         <div className="">Gadget Heaven</div>
-        <div className=" max-md:fixed max-md:right-0 max-md:top-24 ">
+        <div
+          className={`${
+            !menuFlag ? " max-md:translate-x-full " : " max-md:translate-x-0"
+          }  max-md:fixed max-md:right-0 max-md:top-24 max-md:transition-all   max-md:bg-white max-md:h-screen max-md:w-[50vw] max-md:text-black max-md:shadow-lg max-md:gap-2 max-md:p-5 max-md:rounded-sm`}
+        >
           <ul
             onClick={(e) => e.stopPropagation()}
-            className={`${
-              !menuFlag ? " max-md:translate-x-full " : " max-md:translate-x-0"
-            } max-md:transition-all  max-md:flex-col max-md:bg-white max-md:h-screen max-md:w-[50vw] max-md:text-black max-md:shadow-lg max-md:items-start max-md:gap-2 max-md:p-5 max-md:rounded-sm  flex items-center gap-5`}
+            className={`  flex items-center gap-5 max-md:flex-col max-md:items-start `}
           >
             <NavLink
               to={"/"}

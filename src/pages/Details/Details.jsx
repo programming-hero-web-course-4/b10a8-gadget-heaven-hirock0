@@ -57,7 +57,7 @@ const Details = () => {
             it all!
           </p>
         </div>
-        <div className=" absolute right-0 left-0 mt-10 flex  items-center justify-center">
+        <div className=" absolute z-40 right-0 left-0 mt-10 flex  items-center justify-center">
           <div className=" flex w-5/6 max-lg:flex-col max-lg:p-5 max-lg:items-center  border bg-white py-5 text-black rounded-lg shadow-lg">
             <div className=" p-5 w-2/5 max-lg:w-4/6 max-sm:w-full flex items-center justify-center">
               <img
@@ -99,7 +99,7 @@ const Details = () => {
                 />
                 <h1>{filterProduct[0]?.rating}</h1>
               </div>
-              <div className=" flex items-center gap-5 mt-3">
+              <div className=" flex  items-center gap-5 mt-3 ">
                 <button
                   disabled={uniqueCartFlag}
                   onClick={() => {
@@ -115,23 +115,23 @@ const Details = () => {
                   <TiShoppingCart size={20} />
                 </button>
                 <div
-                  className="tooltip cursor-pointer shadow-lg hover:bg-slate-300 active:bg-slate-400 p-2 border rounded-full flex items-center justify-center w-8 h-8"
+                  className="tooltip  cursor-pointer shadow-lg hover:bg-slate-300 active:bg-slate-400  border rounded-full flex items-center justify-center "
                   data-tip="Wishlist"
-                  onClick={() => {
-                    onWishlistHandler(
-                      filterProduct[0],
-                      wishlists,
-                      setWishlists
-                    );
-                  }}
                 >
                   <button
+                    onClick={() => {
+                      onWishlistHandler(
+                        filterProduct[0],
+                        wishlists,
+                        setWishlists
+                      );
+                    }}
                     disabled={uniqueWishFlag}
-                    className={`${
+                    className={`w-8 h-8 rounded-full flex items-center justify-center   ${
                       uniqueWishFlag ? " text-black" : "text-red-600"
                     } `}
                   >
-                    <FaRegHeart className="  " size={16} />
+                    <FaRegHeart className="" size={16} />
                   </button>
                 </div>
               </div>
