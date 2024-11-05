@@ -96,6 +96,14 @@ const NavBar = () => {
             >
               <li>Dashboard</li>
             </NavLink>
+            <NavLink
+              to={"/latest_update"}
+              className={({ isActive }) =>
+                isActive && " bg-black py-2 px-5 rounded-md text-white"
+              }
+            >
+              <li>Latest</li>
+            </NavLink>
           </ul>
         </div>
         <div className=" relative flex items-center gap-3">

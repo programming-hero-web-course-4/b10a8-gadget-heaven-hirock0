@@ -5,6 +5,7 @@ import Dashboard from "../pages/Dashboard/Dashboard";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Statistics from "../pages/Statistics/Statistics";
 import Details from "../pages/Details/Details";
+import LatestUpdate from "../pages/LatestUpdate/LatestUpdate";
 
 export const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ export const router = createBrowserRouter([
       {
         path: "/details/:productId",
         element: <Details></Details>,
+      },
+      {
+        path: "/latest_update",
+        element: <LatestUpdate></LatestUpdate>,
       },
     ],
   },

@@ -95,7 +95,7 @@ const App = () => {
                     }}
                     className={`${
                       activeButton === index
-                        ? " bg-lime-500 text-white "
+                        ? " bg-lime-500 text-lime-500 "
                         : "bg-transparent hover:bg-slate-200 "
                     } transition-all bg-zinc-100 shadow-lg text-sm text-slate-600 w-full  py-3  px-3 rounded-full`}
                   >
@@ -107,7 +107,7 @@ const App = () => {
             {/* left_end */}
             <div className="w-5/6  max-lg:w-full ">
               {filterProducts?.length !== 0 ? (
-                <div className=" max-lg:w-full grid grid-cols-3 gap-5 max-md:grid-cols-2 max-sm:grid-cols-1 justify-items-center">
+                <div className="grid grid-cols-3  max-lg:grid-cols-2 max-sm:grid-cols-1 gap-5 justify-items-center">
                   {filterProducts?.map((item, index) => (
                     <ProductCards key={index} item={item} />
                   ))}
