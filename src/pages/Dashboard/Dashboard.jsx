@@ -2,7 +2,6 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import Carts from "./Carts/Carts";
 import WishLists from "./WishLists/WishLists";
-
 const Dashboard = () => {
   return (
     <main className="bg-slate-100 pb-20">

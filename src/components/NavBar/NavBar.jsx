@@ -40,6 +40,14 @@ const NavBar = () => {
     });
   }, []);
 
+  useEffect(() => {
+    const HeaderTitle = document.querySelector("#headTitle");
+    const path = pathname.split("/");
+    HeaderTitle.innerHTML = `${
+      path[1] === "" ? "Gadgets" : path[1]
+    } | Gadget Heaven`;
+  }, [pathname]);
+
   return (
     <nav
       ref={ref}
