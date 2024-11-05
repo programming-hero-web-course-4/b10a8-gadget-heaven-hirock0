@@ -1,4 +1,4 @@
-## Project Name: BPL-Dream-11
+## Project Name: GadgetHeaven
 ## Live link below : # [https://darling-bubblegum-85ce7a.netlify.app/]
 
 ## List of React Fundamental Concepts used in my project
@@ -11,7 +11,7 @@
 
 - Event Handling - React’s way of managing events such as clicks, form submissions, or keyboard input, often using inline functions or callback references.
 
--Conditional Rendering - Logic that allows components to render differently based on certain conditions, typically using ternary operators or && syntax.
+- Conditional Rendering - Logic that allows components to render differently based on certain conditions, typically using ternary operators or && syntax.
 
 - Lists and Keys - For rendering lists of elements, keys provide a unique identifier for each element to improve performance and maintain stability.
 

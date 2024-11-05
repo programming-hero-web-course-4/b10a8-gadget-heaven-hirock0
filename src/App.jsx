@@ -8,7 +8,8 @@ const App = () => {
   const [categories, setCategories] = useState([]);
   const [activeButton, setActiveButton] = useState(null);
   const { category, setCategory } = useAppContext();
-  const filterProducts = products?.filter((item, index) => {
+
+  const filterProducts = products?.filter((item) => {
     if (category == "All Products") {
       return item;
     } else {
@@ -86,8 +87,6 @@ const App = () => {
             <div className=" bg-white rounded-lg lg:p-5  h-fit  w-1/6 max-lg:w-full ">
               <div className=" lg:flex lg:flex-col lg:items-center gap-5 max-lg:grid max-lg:grid-cols-3 max-sm:grid-cols-2 justify-items-center max-lg:p-5 ">
                 {categories?.map((item, index) => (
-                  // <CategoryBtn key={index} item={{item:item,index}} />
-
                   <button
                     key={index}
                     onClick={() => {
@@ -95,9 +94,9 @@ const App = () => {
                     }}
                     className={`${
                       activeButton === index
-                        ? " bg-lime-500 text-lime-500 "
-                        : "bg-transparent hover:bg-slate-200 "
-                    } transition-all bg-zinc-100 shadow-lg text-sm text-slate-600 w-full  py-3  px-3 rounded-full`}
+                        ? " bg-lime-500 text-white "
+                        : "bg-transparent hover:bg-slate-200 bg-zinc-100 "
+                    } transition-all  shadow-lg text-sm  w-full  py-3  px-3 rounded-full`}
                   >
                     {item?.label}
                   </button>
