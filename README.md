@@ -29,6 +29,9 @@
 - React + Vite.
 - React-Toastify.
 - React-icons
+- React-fast-marquee
+- React-TypeWriter
+
 
 
 ## 3 Key Features below :

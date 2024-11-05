@@ -6,6 +6,25 @@ import { TiShoppingCart } from "react-icons/ti";
 import { CiHeart } from "react-icons/ci";
 import { useAppContext } from "../../AppContextProvider";
 
+const NavRoutes = [
+  {
+    path: "/",
+    title: "Home",
+  },
+  {
+    path: "/statistics",
+    title: "Statistics",
+  },
+  {
+    path: "/Dashboard",
+    title: "Dashboard",
+  },
+  {
+    path: "/latest_update",
+    title: "Latest",
+  },
+];
+
 const NavBar = () => {
   const { carts, wishlists } = useAppContext();
   const location = useLocation();
@@ -15,6 +34,11 @@ const NavBar = () => {
   const [menuFlag, setMenuFlag] = useState(false);
   const [cartFlag, setCartFlag] = useState(false);
   const [wishlistFlag, setWishlistFlag] = useState(false);
+  const [navRouteFlag, setNavRouteFlag] = useState(null);
+
+  const onNavRoute = (idx) => {
+    setNavRouteFlag(idx);
+  };
 
   const CartTotalPrice = carts?.reduce(
     (accumulate, item) => accumulate + item.price,
@@ -24,6 +48,7 @@ const NavBar = () => {
     (accumulate, item) => accumulate + item.price,
     0
   );
+
   useEffect(() => {
     window.addEventListener("scroll", (e) => {
       const hightData = ref.current.getBoundingClientRect();
@@ -72,38 +97,19 @@ const NavBar = () => {
             onClick={(e) => e.stopPropagation()}
             className={`  flex items-center gap-5 max-md:flex-col max-md:items-start `}
           >
-            <NavLink
-              to={"/"}
-              className={({ isActive }) =>
-                isActive && " bg-black py-2 px-5 rounded-md text-white"
-              }
-            >
-              <li>Home</li>
-            </NavLink>
-            <NavLink
-              to={"/statistics"}
-              className={({ isActive }) =>
-                isActive && " bg-black py-2 px-5 rounded-md text-white"
-              }
-            >
-              <li>Statistics</li>
-            </NavLink>
-            <NavLink
-              to={"/dashboard"}
-              className={({ isActive }) =>
-                isActive && " bg-black py-2 px-5 rounded-md text-white"
-              }
-            >
-              <li>Dashboard</li>
-            </NavLink>
-            <NavLink
-              to={"/latest_update"}
-              className={({ isActive }) =>
-                isActive && " bg-black py-2 px-5 rounded-md text-white"
-              }
-            >
-              <li>Latest</li>
-            </NavLink>
+            {NavRoutes.map((item, index) => (
+              <NavLink
+                key={index}
+                to={item.path}
+                className={`${
+                  navRouteFlag === index &&
+                  " bg-slate-800 px-4 py-2 rounded-lg text-white"
+                }`}
+                onClick={() => onNavRoute(index)}
+              >
+                <li>{item.title}</li>
+              </NavLink>
+            ))}
           </ul>
         </div>
         <div className=" relative flex items-center gap-3">
