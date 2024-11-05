@@ -4,13 +4,23 @@ import { useEffect, useRef, useState } from "react";
 import { LuMenu } from "react-icons/lu";
 import { TiShoppingCart } from "react-icons/ti";
 import { CiHeart } from "react-icons/ci";
+import { useAppContext } from "../../AppContextProvider";
 
 const NavBar = () => {
+  const { carts, wishlists } = useAppContext();
   const location = useLocation();
   const pathname = location.pathname;
   const ref = useRef();
   const [flag, setFlag] = useState(false);
   const [menuFlag, setMenuFlag] = useState(false);
+  const [cartFlag, setCartFlag] = useState(false);
+  const [wishlistFlag, setWishlistFlag] = useState(false);
+
+  const CartTotalPrice = carts?.reduce(
+    (accumulate, item) => accumulate + item.price,
+    0
+  );
+
   useEffect(() => {
     window.addEventListener("scroll", (e) => {
       const hightData = ref.current.getBoundingClientRect();
@@ -22,6 +32,8 @@ const NavBar = () => {
     });
     window.addEventListener("click", () => {
       setMenuFlag(false);
+      setWishlistFlag(false);
+      setCartFlag(false);
     });
   }, []);
 
@@ -47,23 +59,82 @@ const NavBar = () => {
               !menuFlag ? " max-md:translate-x-full " : " max-md:translate-x-0"
             } max-md:transition-all  max-md:flex-col max-md:bg-white max-md:text-black max-md:shadow-lg max-md:items-start max-md:gap-2 max-md:p-5 max-md:rounded-sm  flex items-center gap-5`}
           >
-            <NavLink to={"/"}>
+            <NavLink
+              to={"/"}
+              className={({ isActive }) =>
+                isActive ? "active-link" : "inactive-link"
+              }
+            >
               <li>Home</li>
             </NavLink>
-            <NavLink>
+            <NavLink
+              to={"/statistics"}
+              className={({ isActive }) =>
+                isActive ? "active-link" : "inactive-link"
+              }
+            >
               <li>Statistics</li>
             </NavLink>
-            <NavLink to={"/dashboard"}>
+            <NavLink
+              to={"/dashboard"}
+              className={({ isActive }) =>
+                isActive ? "active-link" : "inactive-link"
+              }
+            >
               <li>Dashboard</li>
             </NavLink>
           </ul>
         </div>
-        <div className=" flex items-center gap-3">
-          <button>
+        <div
+          onClick={(e) => e.stopPropagation()}
+          className=" relative flex items-center gap-3"
+        >
+          <button
+            onClick={() => {
+              setWishlistFlag(false), setCartFlag((prev) => !prev);
+            }}
+            className=" relative tooltip"
+            data-tip="Carts"
+          >
             <TiShoppingCart size={25} />
+            {carts.length !== 0 ? (
+              <h1 className=" absolute -top-5 text-xs rounded-full w-5 bg-red-600 text-white flex items-center justify-center font-semibold h-5 right-0 ">
+                {carts.length}
+              </h1>
+            ) : null}
           </button>
-          <button>
+          {/* ----------- */}
+          <div
+            className={`${
+              !cartFlag ? "hidden" : "block"
+            } absolute top-14 bg-red-300 h-52 right-0  w-52`}
+          >
+            <h1>{CartTotalPrice}</h1>
+          </div>
+          {/* --------------------------- */}
+
+          <button
+            onClick={() => {
+              setWishlistFlag((prev) => !prev), setCartFlag(false);
+            }}
+            className=" tooltip relative"
+            data-tip="Wishlist"
+          >
             <CiHeart size={25} />
+            {wishlists.length !== 0 ? (
+              <h1 className=" absolute -top-5 text-xs rounded-full w-5 bg-red-600 text-white flex items-center justify-center font-semibold h-5 right-0 ">
+                {wishlists.length}
+              </h1>
+            ) : null}
+            {/* ----------- */}
+            <div
+              className={`${
+                !wishlistFlag ? "hidden" : "block"
+              } absolute top-14 bg-red-300  h-52 right-0  w-52`}
+            >
+              <h1>wichList</h1>
+            </div>
+            {/* --------------------------- */}
           </button>
           <button
             onClick={(e) => {

@@ -1,12 +1,19 @@
 import { useEffect, useState } from "react";
-
-import axios from "axios";
-import CategoryBtn from "./components/CategoryBtn/CategoryBtn";
 import ProductCards from "./components/ProductCards/ProductCards";
+import { useAppContext } from "./AppContextProvider";
 
 const App = () => {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [activeButton, setActiveButton] = useState(null);
+  const { category, setCategory } = useAppContext();
+  const filterProducts = products?.filter((item, index) => {
+    if (category == "All Products") {
+      return item;
+    } else {
+      return item?.category == category;
+    }
+  });
 
   const onAllProductsWithCategories = async () => {
     try {
@@ -21,7 +28,11 @@ const App = () => {
     }
   };
 
-  console.log(categories);
+  const onCategory = (label, idx) => {
+    setActiveButton(idx);
+    setCategory(label);
+  };
+
   useEffect(() => {
     onAllProductsWithCategories();
   }, []);
@@ -70,17 +81,39 @@ const App = () => {
             <div className=" bg-white rounded-lg lg:p-5  h-fit  w-1/6 max-lg:w-full ">
               <div className=" lg:flex lg:flex-col lg:items-center gap-5 max-lg:grid max-lg:grid-cols-3 max-sm:grid-cols-2 justify-items-center max-lg:p-5 ">
                 {categories?.map((item, index) => (
-                  <CategoryBtn key={index} item={item} />
+                  // <CategoryBtn key={index} item={{item:item,index}} />
+
+                  <button
+                    key={index}
+                    onClick={() => {
+                      onCategory(item?.label, index);
+                    }}
+                    className={`${
+                      activeButton === index
+                        ? " bg-lime-500 text-white "
+                        : "bg-transparent hover:bg-slate-200 "
+                    } transition-all bg-zinc-100 shadow-lg text-sm text-slate-600 w-full  py-3  px-3 rounded-full`}
+                  >
+                    {item?.label}
+                  </button>
                 ))}
               </div>
             </div>
             {/* left_end */}
             <div className="w-5/6  max-lg:w-full ">
-              <div className=" max-lg:w-full grid grid-cols-3 gap-5 max-md:grid-cols-2 max-sm:grid-cols-1 justify-items-center">
-                {products?.map((item, index) => (
-                  <ProductCards key={index} item={item} />
-                ))}
-              </div>
+              {filterProducts?.length !== 0 ? (
+                <div className=" max-lg:w-full grid grid-cols-3 gap-5 max-md:grid-cols-2 max-sm:grid-cols-1 justify-items-center">
+                  {filterProducts?.map((item, index) => (
+                    <ProductCards key={index} item={item} />
+                  ))}
+                </div>
+              ) : (
+                <div className=" h-[500px]">
+                  <h1 className=" text-center text-2xl mt-5 max-sm:text-xl">
+                    Data is not available!
+                  </h1>
+                </div>
+              )}
             </div>
           </div>
           {/* cards_end */}

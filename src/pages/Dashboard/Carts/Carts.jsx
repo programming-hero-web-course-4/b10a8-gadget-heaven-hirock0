@@ -1,8 +1,18 @@
 import { BiSortAlt2 } from "react-icons/bi";
-const ArrayList = [1, 2, 3, 4, 5, 6];
-
 import ReUseAbleCards from "../../../components/ReUseAbleCards/ReUseAbleCards";
+import { useAppContext } from "../../../AppContextProvider";
+import { toast } from "react-toastify";
+import { useState } from "react";
 const Carts = () => {
+  const { carts } = useAppContext();
+  const [sortedCards, setSortedCards] = useState([]);
+  const [flag, setFlag] = useState(false);
+  const sortHandler = () => {
+    const sortedData = carts.sort((a, b) => b.price - a.price);
+    toast.success("It has been sorted by Descending order ");
+    setSortedCards(sortedData);
+  };
+
   return (
     <main>
       <div className="">
@@ -11,7 +21,12 @@ const Carts = () => {
           <div className=" flex max-md:flex-col items-center gap-2">
             <h1 className=" opacity-70">Total cost : 999.99</h1>
             <div className=" flex items-center gap-2">
-              <button className=" text-sm flex   items-center  py-2 px-4 border border-purple-500 text-purple-500 rounded-full">
+              <button
+                onClick={() => {
+                  sortHandler(), setFlag(true);
+                }}
+                className=" hover:bg-purple-100 active:bg-purple-300 text-sm flex   items-center  py-2 px-4 border border-purple-500 text-purple-500 rounded-full"
+              >
                 <span>Sort by Price</span>
                 <BiSortAlt2 size={20} />
               </button>
@@ -23,11 +38,21 @@ const Carts = () => {
         </div>
         {/* cards_star */}
 
-        <div className=" grid gap-5">
-          {ArrayList.map((item, index) => (
-            <ReUseAbleCards key={index} />
-          ))}
-        </div>
+        {carts?.length !== 0 ? (
+          <div className=" grid gap-5">
+            {!flag
+              ? carts?.map((item, index) => (
+                  <ReUseAbleCards key={index} item={[item, "Carts"]} />
+                ))
+              : sortedCards?.map((item, index) => (
+                  <ReUseAbleCards key={index} item={[item, "Carts"]} />
+                ))}
+          </div>
+        ) : (
+          <div className=" h-[60vh]">
+            <h1 className=" text-center text-xl mt-10">There are no data</h1>
+          </div>
+        )}
         {/* cards_end */}
       </div>
     </main>
