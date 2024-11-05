@@ -34,7 +34,7 @@
 
 
 
-## 3 Key Features below :
+## 5 Key Features below :
 - To view details of a product , you have to click (view details) button.
 - You can add cart or Add Wishlist  by (Add to Cary) or (Heart Button) button.
 - By Cart or Heart button on NavBar  you can see selected Carts and or Wishlist.
