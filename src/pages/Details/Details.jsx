@@ -63,7 +63,7 @@ const Details = () => {
               <img
                 src={filterProduct[0]?.product_image}
                 alt=""
-                className=" object-contain rounded-sm max-lg:h-72"
+                className=" object-contain rounded-sm max-lg:h-72 max-md:h-60 max-sm:h-52"
               />
             </div>
             <div className=" flex flex-col justify-center">
