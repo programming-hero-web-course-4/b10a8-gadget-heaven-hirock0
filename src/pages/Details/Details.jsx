@@ -63,10 +63,10 @@ const Details = () => {
               <img
                 src={filterProduct[0]?.product_image}
                 alt=""
-                className="  object-cover rounded-sm max-lg:h-72"
+                className=" object-contain rounded-sm max-lg:h-72"
               />
             </div>
-            <div className=" flex flex-col max-lg:mt-5 justify-center">
+            <div className=" flex flex-col justify-center">
               <h1 className=" text-xl font-semibold">
                 {filterProduct[0]?.product_title}
               </h1>
