@@ -38,7 +38,7 @@ const ReUseAbleCards = ({ item }) => {
         <img
           src={item[0]?.product_image}
           alt={item[0]?.product_title}
-          className=" w-52 h-40 rounded-lg"
+          className=" object-contain w-52 h-40 rounded-lg"
         />
       </div>
 

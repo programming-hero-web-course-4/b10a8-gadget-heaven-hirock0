@@ -84,9 +84,11 @@ const Carts = () => {
         {carts?.length !== 0 ? (
           <div className=" grid gap-5">
             {!flag
-              ? carts?.map((item, index) => (
-                  <ReUseAbleCards key={index} item={[item, "Carts"]} />
-                ))
+              ? carts
+                  ?.reverse()
+                  .map((item, index) => (
+                    <ReUseAbleCards key={index} item={[item, "Carts"]} />
+                  ))
               : sortedCards?.map((item, index) => (
                   <ReUseAbleCards key={index} item={[item, "Carts"]} />
                 ))}
