@@ -1,6 +1,6 @@
 ## Project Name: GadgetHeaven
 ## Live link below : # [https://darling-bubblegum-85ce7a.netlify.app/]
-
+## Requirement Document Link: #[https://github.com/ProgrammingHero1/B10-A8-gadget-heaven/blob/main/Batch-10_Assignment-08-.pdf]
 ## List of React Fundamental Concepts used in my project
 
 - JSX (JavaScript XML) - A syntax extension for JavaScript that allows embedding HTML within JavaScript, making code more readable and intuitive.
@@ -9,7 +9,7 @@
 
 - State - A built-in object that manages data within a component. State changes trigger re-renders, updating the UI accordingly.
 
-- Event Handling - React’s way of managing events such as clicks, form submissions, or keyboard input, often using inline functions or callback references.
+- Event Handling - React's way of managing events such as clicks, form submissions, or keyboard input, often using inline functions or callback references.
 
 - Conditional Rendering - Logic that allows components to render differently based on certain conditions, typically using ternary operators or && syntax.
 
@@ -40,7 +40,7 @@
 - By Cart or Heart button on NavBar  you can see selected Carts and or Wishlist.
 - You can delete elements from carts or wishlist.
 - You can Buy products by clicking (Purchase) button.
-
+- Latest page provides you latests product. And you can search it as you like.
 
 ## I am submitting those :
 - **Private Github Link:** [https://github.com/programming-hero-web-course-4/b10a8-gadget-heaven-hirock0]

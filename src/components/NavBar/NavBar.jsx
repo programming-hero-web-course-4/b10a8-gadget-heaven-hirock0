@@ -87,7 +87,9 @@ const NavBar = () => {
             : " text-black"
         }  h-full`}
       >
-        <div className="">Gadget Heaven</div>
+        <div className=" font-semibold text-xl max-sm:text-base">
+          Gadget Heaven
+        </div>
         <div
           className={`${
             !menuFlag ? " max-md:translate-x-full " : " max-md:translate-x-0"
@@ -143,7 +145,9 @@ const NavBar = () => {
               {carts?.length} Items in Cart
             </h1>
             <div className=" divide-x-2 divider my-2"></div>
-            <h1 className="mb-2">Subtotal: ${CartTotalPrice}</h1>
+            <h1 className="mb-2">
+              Subtotal: ${Number(CartTotalPrice).toLocaleString()}
+            </h1>
             <NavLink to={"/dashboard"}>
               <button className=" bg-purple-500 px-5 py-2 rounded-full hover:bg-purple-700 active:bg-purple-800 text-white">
                 Dashboard
@@ -182,7 +186,9 @@ const NavBar = () => {
                 {wishlists?.length} Items in Cart
               </h1>
               <div className=" divide-x-2 divider my-2"></div>
-              <h1 className="mb-2">Subtotal: ${WishlistTotalPrice}</h1>
+              <h1 className="mb-2">
+                Subtotal: ${Number(WishlistTotalPrice).toLocaleString()}
+              </h1>
               <NavLink to={"/dashboard"}>
                 <button className=" bg-purple-500 px-5 py-2 rounded-full hover:bg-purple-700 active:bg-purple-800 text-white">
                   Dashboard

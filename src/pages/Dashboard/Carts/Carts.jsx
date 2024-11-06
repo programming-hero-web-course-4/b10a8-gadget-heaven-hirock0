@@ -10,7 +10,7 @@ const Carts = () => {
   const [sortedCards, setSortedCards] = useState([]);
   const [flag, setFlag] = useState(false);
   const [modalFlag, setModalFlag] = useState(false);
-
+  const [preSavePrice, setPreSavePrice] = useState(0);
   const TotalPrice = carts.reduce(
     (accumulate, item) => accumulate + item.price,
     0
@@ -28,6 +28,7 @@ const Carts = () => {
 
   const onBuyHandler = () => {
     try {
+      setPreSavePrice(TotalPrice);
       setCarts([]);
       toast.success("Buy successful!");
     } catch (error) {
@@ -50,7 +51,7 @@ const Carts = () => {
           <h1 className=" text-xl font-semibold">Cart</h1>
           <div className=" flex max-md:flex-col items-center gap-2">
             <h1 className="  font-semibold text-xl">
-              Total cost : ${TotalPrice}
+              Total cost : ${Number(TotalPrice).toLocaleString()}
             </h1>
             <div className=" flex items-center gap-2">
               <button
@@ -114,7 +115,9 @@ const Carts = () => {
           <h1 className=" text-xl font-semibold">Payment Successfully</h1>
           <div className=" divider divider-black"></div>
           <h1 className=" mb-2">Thanks for purchasing</h1>
-          <h1 className=" mb-5">Total 405.50</h1>
+          <h1 className=" mb-5">
+            Total:$ {Number(preSavePrice).toLocaleString()}
+          </h1>
           <div className=" flex items-center justify-center">
             <button
               onClick={() => {

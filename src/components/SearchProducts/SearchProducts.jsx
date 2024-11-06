@@ -12,7 +12,9 @@ const SearchProducts = ({ item }) => {
       </div>
       <div className=" text-center gap-1 flex flex-col items-center">
         <h1 className=" text-xl font-semibold">{item?.product_title}</h1>
-        <h1 className=" opacity-80">Price: ${item?.price}</h1>
+        <h1 className=" opacity-80">
+          Price: ${Number(item?.price).toLocaleString()}
+        </h1>
         <NavLink
           to={`/details/${item?.product_id}`}
           className={

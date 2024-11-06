@@ -46,7 +46,7 @@ const ReUseAbleCards = ({ item }) => {
         <div className=" space-y-3">
           <h1 className=" text-xl font-semibold">{item[0]?.product_title}</h1>
           <p className=" opacity-70">{item[0]?.description}</p>
-          <h1>Price: $ {item[0]?.price}</h1>
+          <h1>Price: $ {Number(item[0]?.price).toLocaleString()}</h1>
           {item[1] === "Wishlists" ? (
             <button
               onClick={() => onCartHandler(item[0])}
